@@ -8,4 +8,10 @@
     name: vault
     state: installed
 
+- name: Start Vault Service
+  ansible.builtin.systemd_service:
+    name: vault
+    state: restarted
+    enabled: true
+
 
