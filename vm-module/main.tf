@@ -54,7 +54,7 @@ resource "azurerm_dns_a_record" "private" {
   ttl                 = 10
   records             = [azurerm_network_interface.nic.private_ip_address]
 }
-resource "azurerm_dns_a_record" "public" {
+resource "azurerm_dns_a_record" "pub" {
   name                = "${var.component}-public"
   zone_name           = "pavanidevops.online"
   resource_group_name = data.azurerm_resource_group.rg.name
@@ -62,7 +62,7 @@ resource "azurerm_dns_a_record" "public" {
   records             = [azurerm_public_ip.public_ip.ip_address]
 }
 resource "azurerm_virtual_machine" "vm" {
-  depends_on          = [azurerm_network_interface_security_group_association.nsg-nic, azurerm_dns_a_record.private, azurerm_dns_a_record.public]
+  depends_on          = [azurerm_network_interface_security_group_association.nsg-nic, azurerm_dns_a_record.private, azurerm_dns_a_record.pub]
   name                = var.component
   resource_group_name = data.azurerm_resource_group.rg.name
   location            = data.azurerm_resource_group.rg.location
