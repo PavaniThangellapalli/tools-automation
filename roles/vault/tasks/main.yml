@@ -7,5 +7,5 @@
   ansible.builtin.dnf:
     name: vault
     state: installed
-    enabled: true
+
 
