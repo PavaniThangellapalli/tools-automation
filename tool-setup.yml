@@ -1,0 +1,5 @@
+- name: Setup Tool - Ansible Playbook
+  hosts: all
+  become: yes
+  roles:
+    - "{{ tool_name }}"
